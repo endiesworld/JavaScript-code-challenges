@@ -18,7 +18,8 @@ function camelCase(str){
         newString += newElement  ;
     });
 
-    console.log(newString );
+    return {"New string ": newString };
 }
 
-camelCase("the-stealth-warrior")
+//camelCase("the-stealth-warrior")
+module.exports = camelCase ;

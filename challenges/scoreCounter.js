@@ -22,7 +22,10 @@ var calPoints = function(ops){
     }
     
     score.forEach(e => result += e)
-    return result ;
+    return {"scoreCounter result: " : result };
 }
 
-calPoints(['5', '-2','4', 'C', 'D', '9', '+', '+'])
+
+//calPoints(['5', '-2','4', 'C', 'D', '9', '+', '+'])
+
+module.exports = calPoints ;
