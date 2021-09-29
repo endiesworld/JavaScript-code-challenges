@@ -36,10 +36,9 @@ function colunmOperation(arr, col1=0, col2=1){
     return arrayCopy ;
 }
 
-function checkElementByCol(arr, rowNumber){
+function arrangeArrayByCol(arr, rowNumber){
     let newArray = [...arr]
     let arrayCopy = newArray[rowNumber] ;
-    let passTest = true
     for(let i = 0 ; i < arrayCopy.length -1 ; i++){
       let pointer = i + 1
       while(arrayCopy[i] === arrayCopy[pointer] && pointer + 1 < arrayCopy.length ){
@@ -50,13 +49,12 @@ function checkElementByCol(arr, rowNumber){
   return newArray
 }
 
-function checkOtherElementByCol(arr, rowNumber){
+function checkArrayByCol(arr, rowNumber){
     let newArray = [...arr]
     let arrayCopy = newArray[rowNumber] ;
-    let pointer = 0 + 1
     let testPass = true ;
     for(let i = 0 ; i < arrayCopy.length -1 ; i++){
-       pointer = i + 1
+      let pointer = i + 1
       if(arrayCopy[i] === arrayCopy[pointer]  ){
         testPass = false;
       }
@@ -74,9 +72,35 @@ function arrayElementCounter(arr, element){
   return elementCount
 }
 
+function arrangeArrayByRow(arr, ref){
+  let arrCopy = [...arr] ;
+  let arrLength = arr.length
+  for(let i = 0; i < arrLength - 1 ; i++){
+    let pointer = i + 1;
+    while(arrCopy[i] === arrCopy[pointer] && pointer < arrLength ){
+        arrCopy = rowOperation(arrCopy, pointer, pointer + 1 )
+        pointer += 1 ;
+      }
+  }
+  return arrCopy ;
+}
+
+function colExtractor(arr, colIndex){
+  let colElement = [] ;
+  arr.forEach(element=>{
+    colElement.push(element[colIndex])
+  })
+  return colElement
+}
+
+
 let myArray = [[0,1,1,0],[0,1,1,0], [1,0,0,1], [1,0,0,1]]
 console.log(myArray)
+//Check to confirm that an invidual element in the inner array has an even count.
 console.log('numbers of zeros : ',arrayElementCounter(myArray[0], 1))
-let newArray = checkElementByCol(myArray, 0)
+//Arrange inner array by col to form a chess board using the first row as reference 
+let newArray = arrangeArrayByCol(myArray, 0)
 console.log('After oerderring col with first roow', newArray)
+//Check arrays by col to confirm chess board feature if failed, means it is imposible to achieve the objective
 checkOtherElementByCol( newArray, 1)
+//Arrange array by row using the first element of each inner array as reference
