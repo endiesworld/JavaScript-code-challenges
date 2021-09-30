@@ -96,11 +96,11 @@ function colExtractor(arr, colIndex){
 
 let myArray = [[0,1,1,0],[0,1,1,0], [1,0,0,1], [1,0,0,1]]
 console.log(myArray)
-//Check to confirm that an invidual element in the inner array has an even count.
+//Check with array.forEach to confirm that all invidual element in the inner array has an even count.
 console.log('numbers of zeros : ',arrayElementCounter(myArray[0], 1))
-//Arrange inner array by col to form a chess board using the first row as reference 
+//Arrange inner array element of any of the child array to form a chess board using the first row as reference 
 let newArray = arrangeArrayByCol(myArray, 0)
 console.log('After oerderring col with first roow', newArray)
-//Check arrays by col to confirm chess board feature if failed, means it is imposible to achieve the objective
+//Check all arrays, by col to confirm chess board feature if failed, means it is imposible to achieve the objective
 checkOtherElementByCol( newArray, 1)
 //Arrange array by row using the first element of each inner array as reference
