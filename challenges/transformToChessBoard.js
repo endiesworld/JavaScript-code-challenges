@@ -1,5 +1,5 @@
 // write a function for row operation
-function rowOperation(arr, firstIndex=1, secondIndex=2){
+function swapRows(arr, firstIndex=1, secondIndex=2){
     let arrayCopy = [...arr] ;
     let firstElement = arr[firstIndex] ;
     let secondElement = arr[secondIndex] ;
@@ -8,7 +8,7 @@ function rowOperation(arr, firstIndex=1, secondIndex=2){
     return arrayCopy ;
 }
 let myArray = [[1,0,1,0],[1,0,1,0], [0,1,0,1], [0,1,0,1]]
-console.log(rowOperation(myArray))
+
 
 
 
@@ -19,7 +19,7 @@ function confirmNbyNArray(arr){
     return (colLength === rowLenth)
 }
 
-function colunmOperation(arr, col1=0, col2=1){
+function swapColunm(arr, col1=0, col2=1){
     let arrayCopy = [...arr] ;
     let firstCol = [] ;
     let secondCol = [] ;
@@ -42,7 +42,7 @@ function arrangeArrayByCol(arr, rowNumber){
     for(let i = 0 ; i < arrayCopy.length -1 ; i++){
       let pointer = i + 1
       while(arrayCopy[i] === arrayCopy[pointer] && pointer + 1 < arrayCopy.length ){
-        newArray = colunmOperation(newArray, pointer, pointer + 1 )
+        newArray = swapColunm(newArray, pointer, pointer + 1 )
         pointer += 1 ;
       }
     }
@@ -72,13 +72,14 @@ function arrayElementCounter(arr, element){
   return elementCount
 }
 
-function arrangeArrayByRow(arr, ref){
+function arrangeArrayByRow(arr){
   let arrCopy = [...arr] ;
+  console.log(arrCopy)
   let arrLength = arr.length
   for(let i = 0; i < arrLength - 1 ; i++){
     let pointer = i + 1;
-    while(arrCopy[i] === arrCopy[pointer] && pointer < arrLength ){
-        arrCopy = rowOperation(arrCopy, pointer, pointer + 1 )
+    while(arrCopy[i][0] === arrCopy[pointer][0] && pointer < arrLength-1 ){
+        arrCopy = swapRows(arrCopy, pointer, pointer + 1 )
         pointer += 1 ;
       }
   }
@@ -103,4 +104,6 @@ let newArray = arrangeArrayByCol(myArray, 0)
 console.log('After oerderring col with first roow', newArray)
 //Check arrays by col to confirm chess board feature if failed, means it is imposible to achieve the objective
 checkOtherElementByCol( newArray, 1)
-//Arrange array by row using the first element of each inner array as reference
+//Arrange array by row 
+console.log(arrangeArrayByRow(myArray))
+//check array by row element to 
